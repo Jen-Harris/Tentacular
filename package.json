@@ -7,7 +7,10 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./tests/frontend.js | tap-spec & node ./test/backend.js | tap-spec",
+    "coverage": "istanbul cover ./tests/frontend.js & istanbul cover ./test/backend.js",
+    "nodemon": "nodemon ./tests/frontend.js & nodemon ./test/backend.js",
+    "start": "node ./src/server.js"
   },
   "repository": {
     "type": "git",
