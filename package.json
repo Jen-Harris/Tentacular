@@ -7,9 +7,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "node ./tests/frontend.js | tap-spec & node ./test/backend.js | tap-spec",
-    "coverage": "istanbul cover ./tests/frontend.js & istanbul cover ./test/backend.js",
-    "nodemon": "nodemon ./tests/frontend.js & nodemon ./test/backend.js",
+    "test": "node ./tests/backend.js | tap-spec",
+    "coverage": "istanbul cover ./tests/backend.js",
+    "nodemon": "nodemon ./tests/backend.js",
     "start": "node ./src/server.js"
   },
   "repository": {
