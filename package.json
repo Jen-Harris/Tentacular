@@ -1,0 +1,30 @@
+{
+  "name": "tentacular",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jen-Harris/Tentacular.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jen-Harris/Tentacular/issues"
+  },
+  "homepage": "https://github.com/Jen-Harris/Tentacular#readme",
+  "devDependencies": {
+    "eslint": "^4.3.0",
+    "istanbul": "^0.4.5",
+    "nodemon": "^1.11.0",
+    "shot": "^3.4.2",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.7.0"
+  }
+}
