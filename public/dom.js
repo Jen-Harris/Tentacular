@@ -22,13 +22,16 @@ function render(error, data) {
     resultsField.appendChild(errorDiv);
   } else {
     var parsedData = JSON.parse(data);
-    var hugeString = '';
-    //sorry for the use of ES6 syntax --> no time!
-    parsedData.items.forEach(function(repo){
-      const listItem = `<li><a href = '${repo.html_url}'><h3>${repo.full_name}</h3></a></li>`;
-      hugeString += listItem;
-    });
-    const list = `<ul>${hugeString}</ul>`
+
+    var repoList = parsedData.items.map(function(repo){
+      return '<li><a href = ' +
+        repo.html_url +
+        '><h3>' +
+        repo.full_name +
+        '</h3></a></li>';
+    }).join('');
+
+    var list = '<ul>' + repoList + '</ul>'
     //... and sorry for this innerHTML too =);
     resultsField.innerHTML = list;
 
