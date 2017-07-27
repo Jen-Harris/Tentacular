@@ -21,8 +21,26 @@ function render(error, data) {
     errorDiv.appendChild(errorMessage);
     resultsField.appendChild(errorDiv);
   } else {
-    console.log('we have DATAAA: ', data);
-    // otherwise we render the github results. awaiting backend format.
+    var parsedData = JSON.parse(data);
+    var hugeString = '';
+    //sorry for the use of ES6 syntax --> no time!
+    parsedData.items.forEach(function(repo){
+      const listItem = `<li><a href = '${repo.html_url}'><h3>${repo.full_name}</h3></a></li>`;
+      hugeString += listItem;
+    });
+    const list = `<ul>${hugeString}</ul>`
+    //... and sorry for this innerHTML too =);
+    resultsField.innerHTML = list;
+
+    // var list = document.createElement('ul');
+    // var listItem = document.createElement('li');
+    // var name = document.createElement('h3');
+    // name.innerText = parsedData.items[0].full_name;
+    // list.appendChild(listItem.appendChild(name));
+    //
+    // var link = document.createElement('a');
+    // link.setAttribute('href', parsedData.items[0].html_url);
+    // list.appendChild(link);
   }
 }
 
@@ -35,7 +53,6 @@ function getInput() {
 function makeUrl(userInputArray) {
   return '?q=' + userInputArray[0] + '&' + userInputArray[1];
 }
-
 // either searchTerm or Language or both could be empty strings
 
 //EVENT LISTENERS
