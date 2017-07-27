@@ -21,6 +21,7 @@ function render(error, data) {
     errorDiv.appendChild(errorMessage);
     resultsField.appendChild(errorDiv);
   } else {
+    console.log('we have DATAAA: ', data);
     // otherwise we render the github results. awaiting backend format.
   }
 }
@@ -39,6 +40,7 @@ function makeUrl(userInputArray) {
 
 //EVENT LISTENERS
 button.addEventListener('click', function(event) {
+  event.preventDefault();
   var queryString = makeUrl(getInput());
   serverRequest(queryString, render);
 })
