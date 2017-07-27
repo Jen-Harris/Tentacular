@@ -35,15 +35,12 @@ test('test error in home route', (t)=>{
   })
 })
 
-
-// test('test returns the file', (t)=>{
-//   shot.inject(router, {method:'get', url:'/'}, (res)=>{
-//     const file = ('../public/index.html');
-//     t.equal(res.statusCode, 200, 'Should respond with a status code of 200');
-//     t.equal(res.payload, file, 'should return text/html');
-//     t.end();
-//   })
-// })
+test('test returns the file', (t)=>{
+  shot.inject(router, {method:'get', url:'/'}, (res)=>{
+    t.equal(res.statusCode, 200, 'Should respond with a status code of 200');
+    t.end();
+  })
+});
 
 
 // const inputTests = [
@@ -90,7 +87,7 @@ test('test error in home route', (t)=>{
 // ];
 //
 // inputTests.forEach(({name, payload, newStatusCode})=>{
-//   tape(`Acceptance Test | ${name}`, (t)=>{
+//   test(`Acceptance Test | ${name}`, (t)=>{
 //     shot.inject(router, {method:'POST', url:'/?q=', payload}, (res)=>{
 //       t.equal(res.statusCode, newStatusCode, `HTTP ${newStatusCode} | ${res.payload}`);
 //       t.end();
