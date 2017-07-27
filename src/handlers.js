@@ -30,11 +30,9 @@ handlers.servePublic = (request, response) => {
     '/public/dom.js': 'application/javascript',
     '/public/favicon.ico': 'image/x-icon',
   }[url];
-  console.log(url);
   // now if contentType is truthy do this stuff
   if (contentType) {
     const filePath = path.join(__dirname, '..', url);
-    console.log('filepath', filePath);
     fs.readFile(filePath, (error, file) => {
       // but if there's error handle that first
       if (error) {
@@ -53,7 +51,7 @@ handlers.handleSearch = (request, response) => {
   const searchTerms = request.url.slice(1).split('&');
   const githubUrl = `https://api.github.com/search/repositories${searchTerms[0]}+language:${searchTerms[1]}&sort=stars&order=desc`
   const options = {url : githubUrl, headers: { 'User-Agent': 'request'} };
-  requestModule(options, function (error, res, body) {
+  requestModule(options, (error, res, body) => {
     if (error) { console.log('Error is: ', error) }
     else {
       response.writeHead(200, {'Content-Type': 'application/json'})

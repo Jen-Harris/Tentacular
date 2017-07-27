@@ -40,7 +40,6 @@ function makeUrl(userInputArray) {
 
 //EVENT LISTENERS
 button.addEventListener('click', function(event) {
-  event.preventDefault();
   var queryString = makeUrl(getInput());
   serverRequest(queryString, render);
 })
