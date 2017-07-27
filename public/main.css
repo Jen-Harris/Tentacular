@@ -31,3 +31,27 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
+
+header {
+	background-color: #3C1642;
+	color: #F7FFF7;
+	width: 100%;
+}
+h1{
+	font-family: 'Monoton', cursive;
+	font-size: 50px;
+	width: auto;
+	padding: 2rem 0 2rem 0;
+	text-align: center;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 700px) { h1{
+	font-size: 20px;
+	text-align: center;
+}
+
+}
+select{
+	
+}
