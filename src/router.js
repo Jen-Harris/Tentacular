@@ -1,7 +1,7 @@
 const path = require("path");
 const handlers = require("./handlers");
 
-const router(request, response) => {
+const router = (request, response) => {
   let endpoint = request.url;
   if (endpoint === '/') {
     handlers.serveLanding(request, response)

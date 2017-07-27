@@ -5,7 +5,7 @@
 const path = require("path");
 const fs = require('fs');
 const apiRequest = require('./apiRequest');
-const router = require('./router.js');
+const router = require('./router');
 
 let handlers = module.exports = {}
 
@@ -44,10 +44,10 @@ handlers.servePublic = (request, response) => {
         response.end("Sorry! We've had a problem!");
       } else {
         // otherwise provide the correct file
-        response.writeHead(200, {`content-type: ${contentType}`})
+        response.writeHead(200, {'content-type':contentType})
         response.end(file);
       }
-    };
+    });
   };
 }
 
@@ -63,5 +63,5 @@ handlers.pageNotFound = (request, response) => {
   response.writeHead(404, {
     'content-type': 'text/html'
   });
-  response.end();
+  response.end("404: we've had a problem on our end!");
 }
