@@ -25,19 +25,24 @@ test ('trivial test', t => {
   t.end();
 });
 
-//test handlers.js 404s on known bad filename
+//test handlers.js 404s on percent-encoded directory traverse
+test ('trivial test', t => {
+  t.end();
+});
+
+//test handlers.js 404s on a filename which is not in the whitelist
 
 test ('trivial test', t => {
   t.end();
 });
 
-//test correctly formatted API request results in API http request
+//strecth goal: test correctly formatted API request results in API http request
 
 test ('trivial test', t => {
   t.end();
 });
 
-//test correctly formatted file request urls result in content-type header
+//test correctly formatted file request urls (for existing file) results in content-type header
 
 test ('trivial test', t => {
   t.end();
