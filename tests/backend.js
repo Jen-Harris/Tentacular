@@ -43,54 +43,54 @@ test('test returns the file', (t)=>{
 });
 
 
-const inputTests = [
-  {
-    name: 'valid payload',
-    payload:{
-      language: "javascript",
-      search: "callbacks",
-    },
-    newStatusCode: 200
-  },
-  {
-    name: 'Empty array',
-    payload:{
-      language: [],
-      search: [],
-    },
-    newStatusCode: 400
-  },
-  {
-    name: 'non-string input',
-    payload: {
-      language: 35,
-      search: 21,
-    },
-    newStatusCode: 400
-  },
-  {
-    name: 'empty language but completed search',
-    payload:{
-      language:[],
-      search: 'callbacks',
-    },
-    newStatusCode:200
-  },
-  {
-    name: 'empty search but completed language',
-    payload:{
-      language:'javascript',
-      search: [],
-    },
-    newStatusCode:200
-  },
-];
-
-inputTests.forEach(({name, payload, newStatusCode})=>{
-  test(`Acceptance Test | ${name}`, (t)=>{
-    shot.inject(router, {method:'POST', url:'/?q=', payload}, (res)=>{
-      t.equal(res.statusCode, newStatusCode, `HTTP ${newStatusCode} | ${res.payload}`);
-      t.end();
-    });
-  });
-});
+// const inputTests = [
+//   {
+//     name: 'valid payload',
+//     payload:{
+//       language: "javascript",
+//       search: "callbacks",
+//     },
+//     newStatusCode: 200
+//   },
+//   {
+//     name: 'Empty array',
+//     payload:{
+//       language: [],
+//       search: [],
+//     },
+//     newStatusCode: 400
+//   },
+//   {
+//     name: 'non-string input',
+//     payload: {
+//       language: 35,
+//       search: 21,
+//     },
+//     newStatusCode: 400
+//   },
+//   {
+//     name: 'empty language but completed search',
+//     payload:{
+//       language:[],
+//       search: 'callbacks',
+//     },
+//     newStatusCode:200
+//   },
+//   {
+//     name: 'empty search but completed language',
+//     payload:{
+//       language:'javascript',
+//       search: [],
+//     },
+//     newStatusCode:200
+//   },
+// ];
+//
+// inputTests.forEach(({name, payload, newStatusCode})=>{
+//   test(`Acceptance Test | ${name}`, (t)=>{
+//     shot.inject(router, {method:'POST', url:'/?q=', payload}, (res)=>{
+//       t.equal(res.statusCode, newStatusCode, `HTTP ${newStatusCode} | ${res.payload}`);
+//       t.end();
+//     });
+//   });
+// });
