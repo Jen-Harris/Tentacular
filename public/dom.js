@@ -29,9 +29,6 @@ function render(error, data) {
   } else {
     var parsedData = JSON.parse(data);
 
-    console.log (parsedData.items);
-    console.log (parsedData.items.length);
-
     if (!parsedData.items.length) {
       renderError(`Couldn\'t find any results for ${currentSearchTerm[0]} in ${currentSearchTerm[1]}.\n
        Try something more realistic.\n Or not. Like, whatevs.`);
