@@ -1,4 +1,4 @@
-const test = require ('tape');
+const test = require('tape');
 const shot = require('shot');
 const fs = require('fs');
 const path = require('path');
@@ -19,78 +19,65 @@ test('trivial test', t => {
 
 
 // test url is '/' then response should be
-test('home route', (t)=>{
-  shot.inject(router, {method:'get', url:'/'}, (res)=>{
+test('home route', (t) => {
+  shot.inject(router, {
+    method: 'get',
+    url: '/'
+  }, (res) => {
     t.equal(res.statusCode, 200, 'Should respond with a status code of 200');
+    t.ok(res.payload.includes('<h1>Tentacular!</h1>'),
+      'The main header should be <h1>Tentacular!</h1>')
     t.end();
   })
 })
 
 
-test('test error in home route', (t)=>{
-  shot.inject(router, {method:'get', url:'/index.htmll'}, (res)=>{
+test('The server should response with a 404 if a request for an unknown url is made', (t) => {
+  shot.inject(router, {
+    method: 'get',
+    url: '/index.htmll'
+  }, (res) => {
     t.equal(res.statusCode, 404, 'Should respond with a status code of 404');
-    t.equal(res.payload, "404: we've had a problem on our end!", 'should return the 404 error string for home route');
+
+    t.equal(
+      res.payload,
+      "404: we've had a problem on our end!",
+      'should return the 404 error string for home route'
+    );
+
     t.end();
   })
 })
 
-test('test returns the file', (t)=>{
-  shot.inject(router, {method:'get', url:'/'}, (res)=>{
+test('test returns the file', (t) => {
+  shot.inject(router, {
+    method: 'get',
+    url: '/'
+  }, (res) => {
     t.equal(res.statusCode, 200, 'Should respond with a status code of 200');
     t.end();
   })
 });
 
+test(`The server should response with a list of repos if a request is made to
+  "/" with a "q" query`, (t) => {
 
-// const inputTests = [
-//   {
-//     name: 'valid payload',
-//     payload:{
-//       language: "javascript",
-//       search: "callbacks",
-//     },
-//     newStatusCode: 200
-//   },
-//   {
-//     name: 'Empty array',
-//     payload:{
-//       language: [],
-//       search: [],
-//     },
-//     newStatusCode: 400
-//   },
-//   {
-//     name: 'non-string input',
-//     payload: {
-//       language: 35,
-//       search: 21,
-//     },
-//     newStatusCode: 400
-//   },
-//   {
-//     name: 'empty language but completed search',
-//     payload:{
-//       language:[],
-//       search: 'callbacks',
-//     },
-//     newStatusCode:200
-//   },
-//   {
-//     name: 'empty search but completed language',
-//     payload:{
-//       language:'javascript',
-//       search: [],
-//     },
-//     newStatusCode:200
-//   },
-// ];
-//
-// inputTests.forEach(({name, payload, newStatusCode})=>{
-//   test(`Acceptance Test | ${name}`, (t)=>{
-//     shot.inject(router, {method:'POST', url:'/?q=', payload}, (res)=>{
-//       t.equal(res.statusCode, newStatusCode, `HTTP ${newStatusCode} | ${res.payload}`);
-//       t.end();
-//     });
-//   });
-// });
+    shot.inject(router, {
+      method:'get',
+      url: '/?q=javascript&rebeca'
+    }, (res) => {
+
+      const parsed = JSON.parse(res.payload);
+
+      t.ok(typeof parsed === 'object',
+        'The endpoint should respond with a JSON object');
+
+      t.ok(typeof parsed.total_count === 'number',
+        'The response should have a "total_count" property with a number type');
+
+      t.ok(Array.isArray(parsed.items),
+        'The response should have an "items" property with an array type');
+
+      t.end();
+    })
+})

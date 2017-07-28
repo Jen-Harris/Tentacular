@@ -21,8 +21,20 @@ function render(error, data) {
     errorDiv.appendChild(errorMessage);
     resultsField.appendChild(errorDiv);
   } else {
-    console.log('we have DATAAA: ', data);
-    // otherwise we render the github results. awaiting backend format.
+    var parsedData = JSON.parse(data);
+
+    var repoList = parsedData.items.map(function(repo){
+      return '<li><a href = ' +
+        repo.html_url +
+        '><h3>' +
+        repo.full_name +
+        '</h3></a></li>';
+    }).join('');
+
+    var list = '<ul>' + repoList + '</ul>'
+    //... and sorry for this innerHTML too =);
+    resultsField.innerHTML = list;
+
   }
 }
 
@@ -35,7 +47,6 @@ function getInput() {
 function makeUrl(userInputArray) {
   return '?q=' + userInputArray[0] + '&' + userInputArray[1];
 }
-
 // either searchTerm or Language or both could be empty strings
 
 //EVENT LISTENERS
