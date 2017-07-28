@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/Jen-Harris/Tentacular.svg?branch=master)](https://travis-ci.org/Jen-Harris/Tentacular)
+
+[![codecov](https://codecov.io/gh/Jen-Harris/Tentacular/branch/master/graph/badge.svg)](https://codecov.io/gh/Jen-Harris/Tentacular)
+
 # Tentacular!
 
 ## Why?
