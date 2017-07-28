@@ -65,7 +65,7 @@ function makeUrl(userInputArray) {
 // either searchTerm or Language or both could be empty strings
 
 //EVENT LISTENERS
-button.addEventListener('click', function(event) {
+button.parentElement.addEventListener('submit', function(event) {
   event.preventDefault();
   currentSearchTerm = getInput();
   var queryString = makeUrl(currentSearchTerm);
