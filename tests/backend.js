@@ -3,22 +3,8 @@ const shot = require('shot');
 const fs = require('fs');
 const path = require('path');
 const router = require('../src/router');
-const api = require('../src/apiRequest')
 const handlers = require('../src/handlers.js');
 
-//see this for an example for passing different request objects to router;
-//https://github.com/foundersandcoders/error-handling-workshop/blob/master/acceptance/index.js
-
-//input validation test (for example if it has the correct input);
-//test url maker function
-test('trivial test', t => {
-  var sum = 2
-  t.pass(sum, 2, 'Testing Tape');
-  t.end();
-})
-
-
-// test url is '/' then response should be
 test('home route', (t) => {
   shot.inject(router, {
     method: 'get',
