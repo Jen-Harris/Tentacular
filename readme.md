@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Jen-Harris/Tentacular.svg?branch=master)](https://travis-ci.org/Jen-Harris/Tentacular)
+
 # Tentacular!
 
 ## Why?
