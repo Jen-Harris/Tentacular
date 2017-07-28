@@ -35,15 +35,6 @@ function render(error, data) {
     //... and sorry for this innerHTML too =);
     resultsField.innerHTML = list;
 
-    // var list = document.createElement('ul');
-    // var listItem = document.createElement('li');
-    // var name = document.createElement('h3');
-    // name.innerText = parsedData.items[0].full_name;
-    // list.appendChild(listItem.appendChild(name));
-    //
-    // var link = document.createElement('a');
-    // link.setAttribute('href', parsedData.items[0].html_url);
-    // list.appendChild(link);
   }
 }
 
